@@ -23,7 +23,7 @@ public class ChangePlaylistNameController extends HttpServlet {
             String newplaylistname = request.getParameter("newplaylistname");
             String oldplaylistname = request.getParameter("oldplaylistname");
             pm.changePlaylistName(newplaylistname, oldplaylistname);
-            request.getRequestDispatcher("/ViewPlaylist").forward(request, response);
+            response.sendRedirect("ViewPlaylist");
 
         }
     }
