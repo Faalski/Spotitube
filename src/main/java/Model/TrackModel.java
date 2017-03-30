@@ -34,6 +34,24 @@ public class TrackModel {
         return trackModels;
     }
 
+    public List<TrackModel> getAllTracks(){
+        TrackService ts = new TrackService();
+        List<Track> serviceTrack = ts.getAllTracks();
+        List<TrackModel> trackModels = new ArrayList<TrackModel>();
+
+        for(Track track: serviceTrack){
+            TrackModel tm = new TrackModel();
+            tm.setPlaylist(track.playlist);
+            tm.setPerformer(track.performer);
+            tm.setTitle(track.title);
+            tm.setUrl(track.url);
+            tm.setDuration(track.duration);
+            System.out.println(tm.getPerformer());
+            trackModels.add(tm);
+        }
+        return trackModels;
+    }
+
     public void setPlaylist(String playlist) {
         this.playlist = playlist;
     }
@@ -55,5 +73,16 @@ public class TrackModel {
 
     public String getPerformer() {
         return performer;
+    }
+    public String getTitle() {
+        return title;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public long getDuration() {
+        return duration;
     }
 }

@@ -58,5 +58,24 @@ public class TrackDAO {
         }
     }
 
+    public List<Track> getAllTracks(){
+        List<Track> tempTrack = new ArrayList<Track>();
+        try {
+            Connection connection = DriverManager.getConnection(databaseproperties.connectionString());
+            final String sql = "SELECT performer, title, url, duration FROM Track";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                Track track = new Track(resultSet.getString("performer"), resultSet.getString("title"), resultSet.getString("url"), resultSet.getLong("duration"), "owner");
+                tempTrack.add(track);
+            }
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error communicating with database " + databaseproperties.connectionString(), e);
+        }
+        return tempTrack;
+    }
+
 
 }

@@ -20,4 +20,10 @@ public class TrackService {
         tracks = trackDAO.getTracksByPlaylist(playlist);
         return tracks;
     }
+
+    public List<Track> getAllTracks(){
+        TrackDAO trackDAO = new TrackDAO(new DatabaseProperties());
+        tracks = trackDAO.getAllTracks();
+        return tracks;
+    }
 }
