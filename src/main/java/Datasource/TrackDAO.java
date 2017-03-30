@@ -1,7 +1,9 @@
 package Datasource;
 
 import Datasource.Util.DatabaseProperties;
+import Domain.Song;
 import Domain.Track;
+import Domain.Video;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,51 +14,55 @@ import java.util.logging.Logger;
 /**
  * Created by Lars on 24-3-2017.
  */
-public class TrackDAO {
-    List<Track> tracks = new ArrayList<Track>();
-    private Logger logger = Logger.getLogger(getClass().getName());
-    private final DatabaseProperties databaseproperties;
-
-
+public class TrackDAO extends MainDAO {
     public TrackDAO(DatabaseProperties databaseProperties) {
-        this.databaseproperties = databaseProperties;
-        tryLoadJdbcDriver(databaseProperties);
+        super(databaseProperties);
     }
 
-    private void tryLoadJdbcDriver(DatabaseProperties databaseProperties) {
-        try {
-            Class.forName(databaseProperties.driver());
-        } catch (ClassNotFoundException e) {
-            logger.log(Level.SEVERE, "Can't load JDBC Driver " + databaseProperties.driver(), e);
+    public List<Track> getTracks() throws SQLException {
+        try{
+            final String sql = "SELECT t.performer, t.title, t.url, t.duration, t.soort, t.album, t.playcount, t.publicationdate, t.description FROM Track t INNER JOIN TrackInPlaylist tip ON t.title = tip.track AND t.performer = tip.performer";
+            retrieveTracksFromDatabase(sql, null);
+        } catch (SQLException e) {
+            raiseError(e);
         }
+        
+        return tracks;
     }
 
     public List<Track> getTracksByPlaylist(String playlist) {
-
+        String [] sqlvariables = {playlist};
         try {
-            Connection connection = DriverManager.getConnection(databaseproperties.connectionString());
-            final String sql = "SELECT performer, title, url, duration FROM Track WHERE playlist = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
 
-            statement.setString(1, playlist);
-            retrieveTracks(statement, playlist);
-            statement.close();
-            connection.close();
+            final String sql = "SELECT t.performer, t.title, t.url, t.duration, t.soort, t.album, t.playcount, t.publicationdate, t.description FROM Track t INNER JOIN TrackInPlaylist tip ON t.title = tip.track AND t.performer = tip.performer WHERE tip.playlist = ?";
+            retrieveTracksFromDatabase(sql, sqlvariables);
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Error communicating with database " + databaseproperties.connectionString(), e);
+            raiseError(e);
         }
 
         return tracks;
     }
+    public void retrieveTracksFromDatabase(String sql, String[] sqlvariables) throws SQLException {
+        Connection connection = openConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement = statementSetString(sqlvariables, statement);
+        retrieveTracks(statement);
+        closeConnection(statement, connection);
+    }
 
-    private void retrieveTracks(PreparedStatement statement, String playlist) throws SQLException {
+    private void retrieveTracks(PreparedStatement statement) throws SQLException {
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()) {
-            Track track = new Track(resultSet.getString("performer"), resultSet.getString("title"), resultSet.getString("url"), resultSet.getLong("duration"), playlist);
-            tracks.add(track);
+            if (resultSet.getString("soort").equals("song")) {
+                Track song = new Song(resultSet.getString("performer"), resultSet.getString("title"), resultSet.getString("url"), resultSet.getLong("duration"), resultSet.getString("album"));
+                tracks.add(song);
+            }
+            else if (resultSet.getString("soort").equals("video")) {
+                Track video = new Video(resultSet.getString("performer"), resultSet.getString("title"), resultSet.getString("url"), resultSet.getLong("duration"), resultSet.getInt("playcount"), resultSet.getDate("publicationdate"), resultSet.getString("description"));
+
+                tracks.add(video);
+            }
         }
     }
-
-
 }

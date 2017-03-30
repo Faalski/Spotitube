@@ -1,5 +1,7 @@
 package Presentation;
 
+import Domain.Playlist;
+import Domain.Track;
 import Model.PlaylistModel;
 import Model.TrackModel;
 import Service.RestResourceConfig;
@@ -10,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,11 +23,14 @@ import java.util.List;
 public class ViewPlaylistsController extends HttpServlet {
     PlaylistModel pm = new PlaylistModel();
     private TrackModel tm = new TrackModel();
+    List<TrackModel> trackmodels = new ArrayList<TrackModel>();
+    String owner = "harry";
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RestResourceConfig rrc = new RestResourceConfig();
-        String owner = "harry";
-        List<PlaylistModel> playlistmodels = pm.getAllPlaylists(owner);
+
+        List<PlaylistModel> playlistmodels = new ArrayList<PlaylistModel>();
+        playlistmodels = pm.getAllPlaylists(owner);
         request.setAttribute("playlists", playlistmodels);
         request.getRequestDispatcher("/ViewPlaylist.jsp").forward(request, response);
 
@@ -36,9 +43,27 @@ public class ViewPlaylistsController extends HttpServlet {
             request.getRequestDispatcher("/ChangePlaylistName.jsp").forward(request, response);
         }
         else if(request.getParameter("viewtracksfromplaylist") != null) {
-            List<TrackModel> trackModels =tm.getTracksFromPlaylist(JSPplaylist);
-            request.setAttribute("tracksfromplaylist", trackModels);
+            trackmodels =tm.getTracksFromPlaylist(JSPplaylist);
+            request.setAttribute("tracksfromplaylist", trackmodels);
             request.getRequestDispatcher("/ViewTracksFromPlaylist.jsp").forward(request, response);
+        }
+        else if(request.getParameter("deleteplaylist") != null) {
+            try {
+                pm.deletePlaylist(owner, JSPplaylist);
+                response.sendRedirect("ViewPlaylist");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(request.getParameter("addTrack") != null) {
+            try {
+                trackmodels = tm.getTracks();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            request.setAttribute("tracks", trackmodels);
+            request.getRequestDispatcher("/ViewTracks.jsp").forward(request, response);
         }
     }
 
