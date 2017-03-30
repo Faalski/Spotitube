@@ -19,8 +19,8 @@
         <servlet-class>Presentation.ViewPlaylistsController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ViewTracksFromPlaylist</servlet-name>
-        <servlet-class>Presentation.ViewTracksFromPlaylistController</servlet-class>
+        <servlet-name>ViewTracks</servlet-name>
+        <servlet-class>Presentation.ViewTracksController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -34,11 +34,14 @@
         <servlet-name>SearchTracks</servlet-name>
         <servlet-class>Presentation.SearchTracksController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreatePlaylist</servlet-name>
+        <servlet-class>Presentation.CreatePlaylistController</servlet-class>
+    </servlet>
 
-    
     <servlet-mapping>
-        <servlet-name>ViewTracksFromPlaylist</servlet-name>
-        <url-pattern>/ViewTracksFromPlaylist</url-pattern>
+        <servlet-name>ViewTracks</servlet-name>
+        <url-pattern>/ViewTracks</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewPlaylist</servlet-name>
@@ -55,6 +58,10 @@
     <servlet-mapping>
         <servlet-name>SearchTracks</servlet-name>
         <url-pattern>/SearchTracks</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreatePlaylist</servlet-name>
+        <url-pattern>/CreatePlaylist</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

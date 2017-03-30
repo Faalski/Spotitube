@@ -4,6 +4,7 @@ import Domain.Playlist;
 import Service.PlaylistService;
 import Service.RestResourceConfig;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,12 @@ public class PlaylistModel {
     public void changePlaylistName(String newplaylistname, String oldplaylistname) {
         ps.changePlaylistName(newplaylistname, oldplaylistname);
     }
+    public void deletePlaylist(String owner, String playlist) throws SQLException {
+        ps.deletePlaylist(owner, playlist);
+    }
+    public void createNewPlaylist(String[] newPlaylistInfo) {
+        ps.createNewPlaylist(newPlaylistInfo);
+    }
 
     public void setOwner(String owner) {
         this.owner = owner;
@@ -49,6 +56,7 @@ public class PlaylistModel {
     }
 
     public String getOwner() { return owner;}
+
 
 
 }

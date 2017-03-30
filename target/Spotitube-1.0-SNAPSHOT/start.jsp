@@ -9,6 +9,6 @@
     </head>
     <body>
         <h1>HALLO</h1>
-        <a href="/Spotitube/ViewPlaylist" class="button">Playlist</a>
+        <a href="/Spotitube/ViewPlaylist" type="button">Klik</a>
     </body>
 </html>

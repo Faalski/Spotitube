@@ -2,65 +2,86 @@ package Datasource;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Datasource.Util.DatabaseProperties;
 import Domain.Playlist;
+import Model.PlaylistModel;
 
-public class PlaylistDAO {
+public class PlaylistDAO extends MainDAO {
     List<Playlist> playlists = new ArrayList<Playlist>();
     private Logger logger = Logger.getLogger(getClass().getName());
-    private final DatabaseProperties databaseproperties;
 
     public PlaylistDAO(DatabaseProperties databaseProperties) {
-        this.databaseproperties = databaseProperties;
-        tryLoadJdbcDriver(databaseProperties);
+        super(databaseProperties);
     }
 
-    private void tryLoadJdbcDriver(DatabaseProperties databaseProperties) {
-        try {
-            Class.forName(databaseProperties.driver());
-        } catch (ClassNotFoundException e) {
-            logger.log(Level.SEVERE, "Can't load JDBC Driver " + databaseProperties.driver(), e);
-        }
-    }
-
+    @Override
     public List<Playlist> getPlaylistsByOwner(String owner) {
-
+        String[] sqlvariables = {owner};
         try {
-            Connection connection = DriverManager.getConnection(databaseproperties.connectionString());
+            Connection connection = openConnection();
             final String sql = "SELECT name FROM Playlist WHERE owner = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, owner);
+            statement = statementSetString(sqlvariables, statement);
             retrievePlaylists(statement, owner);
-            statement.close();
-            connection.close();
+            closeConnection(statement, connection);
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Error communicating with database " + databaseproperties.connectionString(), e);
+            raiseError(e);
         }
         return playlists;
     }
 
     private void retrievePlaylists(PreparedStatement statement, String owner) throws SQLException {
+        playlists = clearPlaylistValues(playlists, owner);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
             Playlist playlist = new Playlist(owner, resultSet.getString("name"));
             playlists.add(playlist);
         }
     }
-
+    @Override
     public void changePlaylistName(String newplaylistname, String oldplaylistname) {
+        String[] sqlvariables = {newplaylistname, oldplaylistname,};
         try {
-            Connection connection = DriverManager.getConnection(databaseproperties.connectionString());
+            Connection connection = openConnection();
             final String sql = "UPDATE Playlist SET name = ? WHERE name = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, newplaylistname);
-            statement.setString(2, oldplaylistname);
+            statement = statementSetString(sqlvariables, statement );
             statement.executeUpdate();
-            statement.close();
+            closeConnection(statement, connection);
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Error communicating with database " + databaseproperties.connectionString(), e);
+            raiseError(e);
+        }
+    }
+    @Override
+    public void deletePlaylist(String owner, String playlist) throws SQLException {
+        String[] sqlvariables = {owner, playlist};
+        try {
+            Connection connection = openConnection();
+            final String sql = "DELETE FROM Playlist WHERE owner = ? AND name = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement = statementSetString(sqlvariables, statement);
+            statement.executeUpdate();
+            closeConnection(statement, connection);
+        } catch (SQLException e) {
+            raiseError(e);
+        }
+    }
+    @Override
+    public void createNewPlaylist(String[] newPlaylistInfo) {
+        String[] sqlvariables = newPlaylistInfo;
+        try {
+            Connection connection = openConnection();
+            final String sql = "INSERT INTO Playlist(owner, name) VALUES(?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement = statementSetString(sqlvariables, statement);
+            statement.executeUpdate();
+            closeConnection(statement, connection);
+        } catch (SQLException e) {
+            raiseError(e);
         }
     }
 }

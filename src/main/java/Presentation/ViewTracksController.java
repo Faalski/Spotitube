@@ -14,11 +14,11 @@ import java.util.List;
 /**
  * Created by Lars on 24-3-2017.
  */
-@WebServlet(urlPatterns = "/ViewTracksFromPlaylist")
-public class ViewTracksFromPlaylistController extends HttpServlet {
+@WebServlet(urlPatterns = "/ViewTracks")
+public class ViewTracksController extends HttpServlet {
 
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
     }

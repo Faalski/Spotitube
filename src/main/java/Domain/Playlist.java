@@ -12,4 +12,11 @@ public class Playlist {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
 }

@@ -13,13 +13,18 @@
     <title>Playlists</title> <br>
     <c:forEach items="${playlists}" var="current">
     <form action="/Spotitube/ViewPlaylist" method="post">
+
             <c:out value="${current.name}"/>
-            <input type="submit" name="viewtracksfromplaylist" value="bekijk tracks"  placeholder="viewtracks"/>
-            <input type="submit" name="changename" value="verander playlistname" placeholder="naam wijzigen">
+            <input type="submit" name="viewtracksfromplaylist" value="bekijk tracks"/>
+            <input type="submit" name="addTrack" value="Voeg track toe"/>
+            <input type="submit" name="changename" value="verander playlistname" />
+            <input type="submit" name="deleteplaylist" value="Verwijder Playlist"/>
             <input type="hidden" name="playlistname" value="<c:out value="${current.name}"/>">
     </form>
-
     </c:forEach>
+
+    <a href="/Spotitube/CreatePlaylist.jsp">Maak playlist</a>
+
 
 
 
