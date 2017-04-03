@@ -27,4 +27,12 @@ public class TrackService {
         tracks = trackDAO.getTracks();
         return tracks;
     }
+
+    public void deleteTrackFromPlaylist(String title, String performer, String playlist) {
+        try {
+            trackDAO.deleteTrackFromPlaylist(title, performer, playlist);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

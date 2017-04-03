@@ -34,6 +34,10 @@
         <servlet-name>CreatePlaylist</servlet-name>
         <servlet-class>Presentation.CreatePlaylistController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewTracksFromPlaylist</servlet-name>
+        <servlet-class>Presentation.ViewTracksFromPlaylistController</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>ViewTracks</servlet-name>
@@ -54,6 +58,10 @@
     <servlet-mapping>
         <servlet-name>CreatePlaylist</servlet-name>
         <url-pattern>/CreatePlaylist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewTracksFromPlaylist</servlet-name>
+        <url-pattern>/ViewTracksFromPlaylist</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

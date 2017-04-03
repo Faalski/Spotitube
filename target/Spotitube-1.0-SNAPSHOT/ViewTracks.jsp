@@ -1,3 +1,4 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
   User: Lars
@@ -9,15 +10,16 @@
 <html>
 <head>
     <title>View Tracks</title>
-    <c:forEach items="${tracks}" var="current">
-        <tr>
-            <td>
-                <c:out value="${current.performer}"></c:out>
-            </td>
-        </tr>
-    </c:forEach>
+
 </head>
 <body>
+<c:forEach items="${tracks}" var="current">
+    <tr>
+        <td>
+            <c:out value="${current.performer}"></c:out>
+        </td>
+    </tr>
+</c:forEach>
 
 </body>
 </html>

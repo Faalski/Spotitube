@@ -17,5 +17,9 @@ public class SongModel extends TrackModel {
     public String getAlbum() {
         return album;
     }
+    @Override
+    public String getPerformer() {
+        return performer;
+    }
 
 }

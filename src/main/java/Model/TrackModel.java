@@ -35,7 +35,6 @@ public class TrackModel {
 
     private void fillTracks(List<Track> serviceTracks) {
         for (Track t: serviceTracks) {
-
             if(t instanceof Song) {
                 fillSong(t);
 
@@ -66,6 +65,9 @@ public class TrackModel {
         vm.setPublication_date(t.publication_date);
         vm.setDescription(t.description);
         trackModels.add(vm);
+    }
+    public void deleteTrackFromPlaylist(String title, String performer, String playlist) {
+        ts.deleteTrackFromPlaylist(title, performer, playlist);
     }
 
     public void setPerformer(String performer) {

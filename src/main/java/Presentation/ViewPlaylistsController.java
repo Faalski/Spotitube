@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,23 +34,23 @@ public class ViewPlaylistsController extends HttpServlet {
         playlistmodels = pm.getAllPlaylists(owner);
         request.setAttribute("playlists", playlistmodels);
         request.getRequestDispatcher("/ViewPlaylist.jsp").forward(request, response);
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String JSPplaylist = request.getParameter("playlistname");
+        String playlist = request.getParameter("playlistname");
+        HttpSession session=request.getSession(true);
+        session.setAttribute("playlistname",playlist);
+
         if(request.getParameter("changename") != null) {
-            request.setAttribute("playlistname", JSPplaylist);
             request.getRequestDispatcher("/ChangePlaylistName.jsp").forward(request, response);
         }
         else if(request.getParameter("viewtracksfromplaylist") != null) {
-            trackmodels =tm.getTracksFromPlaylist(JSPplaylist);
-            request.setAttribute("tracksfromplaylist", trackmodels);
-            request.getRequestDispatcher("/ViewTracksFromPlaylist.jsp").forward(request, response);
+            response.sendRedirect("ViewTracksFromPlaylist");
+            //request.getRequestDispatcher("ViewTracksFromPlaylist").forward(request, response);
         }
         else if(request.getParameter("deleteplaylist") != null) {
             try {
-                pm.deletePlaylist(owner, JSPplaylist);
+                pm.deletePlaylist(owner, playlist);
                 response.sendRedirect("ViewPlaylist");
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -61,7 +62,6 @@ public class ViewPlaylistsController extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
             request.setAttribute("tracks", trackmodels);
             request.getRequestDispatcher("/ViewTracks.jsp").forward(request, response);
         }

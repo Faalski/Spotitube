@@ -17,20 +17,23 @@ import java.util.logging.Logger;
 public class TrackDAO extends MainDAO {
     public TrackDAO(DatabaseProperties databaseProperties) {
         super(databaseProperties);
-    }
 
+    }
+    @Override
     public List<Track> getTracks() throws SQLException {
+        tracks = clearTrackValues(tracks);
         try{
-            final String sql = "SELECT t.performer, t.title, t.url, t.duration, t.soort, t.album, t.playcount, t.publicationdate, t.description FROM Track t INNER JOIN TrackInPlaylist tip ON t.title = tip.track AND t.performer = tip.performer";
+            final String sql = "SELECT t.performer, t.title, t.url, t.duration, t.soort, t.album, t.playcount, t.publicationdate, t.description FROM Track t";
             retrieveTracksFromDatabase(sql, null);
         } catch (SQLException e) {
             raiseError(e);
         }
-        
         return tracks;
     }
-
+    @Override
     public List<Track> getTracksByPlaylist(String playlist) {
+        tracks = clearTrackValues(tracks);
+
         String [] sqlvariables = {playlist};
         try {
 
@@ -42,6 +45,20 @@ public class TrackDAO extends MainDAO {
 
         return tracks;
     }
+
+    public void deleteTrackFromPlaylist(String title, String performer, String playlist)  {
+        String [] sqlvariables = {title, performer, playlist};
+        try {
+            final String sql = "DELETE FROM TrackInPlaylist WHERE track = ? AND performer = ? AND playlist = ?";
+            Connection connection = openConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement = statementSetString(sqlvariables, statement);
+            statement.executeUpdate();
+            closeConnection(statement, connection);
+        }catch (SQLException e) {
+            raiseError(e);
+        }
+    }
     public void retrieveTracksFromDatabase(String sql, String[] sqlvariables) throws SQLException {
         Connection connection = openConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -50,10 +67,13 @@ public class TrackDAO extends MainDAO {
         closeConnection(statement, connection);
     }
 
+
+
     private void retrieveTracks(PreparedStatement statement) throws SQLException {
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()) {
+
             if (resultSet.getString("soort").equals("song")) {
                 Track song = new Song(resultSet.getString("performer"), resultSet.getString("title"), resultSet.getString("url"), resultSet.getLong("duration"), resultSet.getString("album"));
                 tracks.add(song);
@@ -65,4 +85,6 @@ public class TrackDAO extends MainDAO {
             }
         }
     }
+
+
 }

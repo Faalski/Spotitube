@@ -52,6 +52,14 @@ public class MainDAO {
         }
         return list;
     }
+    public List<Track> clearTrackValues(List<Track> list) {
+        Iterator<Track> it = list.iterator();
+        while (it.hasNext()) {
+            Track t = it.next();
+            it.remove();
+        }
+        return list;
+    }
 
     public PreparedStatement statementSetString(String[] sqlvariables, PreparedStatement statement) throws SQLException {
         if (sqlvariables != null) {
@@ -88,6 +96,9 @@ public class MainDAO {
 
     public List<Track> getTracks() throws SQLException {
         return tracks;
+    }
+
+    public void deleteTrackFromPlaylist(String track, String performer, String playlist) throws SQLException {
     }
 }
 
