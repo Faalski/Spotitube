@@ -12,12 +12,18 @@
     <title>Search Tracks</title>
 </head>
 <body>
+<p>Search track by title: </p>
+<form action="/Spotitube/SearchTracks" method="post">
+    <input type="text" name="SearchInput">
+    <input type="submit" name="submitInput">
+</form>
 <table border="1">
     <tr>
         <th>Performer</th>
         <th>Title</th>
         <th>Duration</th>
         <th>url</th>
+        <th>Add</th>
     </tr>
     <c:forEach items="${tracks}" var="current">
         <tr>
@@ -25,9 +31,11 @@
             <td><c:out value="${current.title}"/></td>
             <td><c:out value="${current.duration}"/></td>
             <td><c:out value="${current.url}"/></td>
+            <td><form action="/Spotitube/AddTrackToPlayList" method="post"><input type="hidden" name="TrackName" value="${current.title}"><input type="hidden" name="PerformerName" value="${current.performer}"><input type="submit" name="submitInput"></form></td>
         </tr>
     </c:forEach>
 </table>
+
 
 </body>
 </html>

@@ -33,6 +33,10 @@ public class PlaylistModel {
         return playlistModels;
     }
 
+    public void AddTrackToPlayList(String trackname, String performer, String playlist) throws SQLException {
+        ps.AddTrackToPlayList(trackname, performer, playlist);
+    }
+
     public void changePlaylistName(String newplaylistname, String oldplaylistname) {
         ps.changePlaylistName(newplaylistname, oldplaylistname);
     }

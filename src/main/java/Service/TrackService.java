@@ -27,4 +27,9 @@ public class TrackService {
         tracks = trackDAO.getTracks();
         return tracks;
     }
+
+    public List<Track> getTracksByName(String name) throws SQLException {
+        tracks = trackDAO.getTracksByName(name);
+        return tracks;
+    }
 }

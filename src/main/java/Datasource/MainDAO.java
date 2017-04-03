@@ -53,6 +53,15 @@ public class MainDAO {
         return list;
     }
 
+    public List<Track> clearTrackValues(List<Track> list) {
+        Iterator<Track> it = list.iterator();
+        while (it.hasNext()) {
+            Track p = it.next();
+                it.remove();
+        }
+        return list;
+    }
+
     public PreparedStatement statementSetString(String[] sqlvariables, PreparedStatement statement) throws SQLException {
         if (sqlvariables != null) {
             for (int i=0; i < sqlvariables.length; i++) {
@@ -79,6 +88,8 @@ public class MainDAO {
         connection.close();
     }
 
+    public void AddNewTrackToPlayList(String trackname, String performer, String playlist){
+    }
     public void changePlaylistName(String newplaylistname, String oldplaylistname) {
     }
     public void deletePlaylist(String owner, String playlist) throws SQLException {
@@ -87,6 +98,10 @@ public class MainDAO {
     }
 
     public List<Track> getTracks() throws SQLException {
+        return tracks;
+    }
+
+    public List<Track> getTracksByName(String name) throws SQLException {
         return tracks;
     }
 }

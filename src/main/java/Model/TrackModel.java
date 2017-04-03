@@ -20,15 +20,24 @@ public class TrackModel {
     long duration;
     TrackService ts = new TrackService();
     List<TrackModel> trackModels = new ArrayList<TrackModel>();
+    List<Track> serviceTracks = new ArrayList<Track>();
 
     public List<TrackModel> getTracksFromPlaylist(String playlist) {
-        List<Track> serviceTracks = ts.getTracksFromPlaylist(playlist);
+        serviceTracks = ts.getTracksFromPlaylist(playlist);
         fillTracks(serviceTracks);
         return trackModels;
     }
 
     public List<TrackModel> getTracks() throws SQLException {
-        List<Track> serviceTracks = ts.getTracks();
+        trackModels.clear();
+        serviceTracks = ts.getTracks();
+        fillTracks(serviceTracks);
+        return trackModels;
+    }
+
+    public List<TrackModel> getTracksByName(String name) throws SQLException {
+        trackModels.clear();
+        serviceTracks = ts.getTracksByName(name);
         fillTracks(serviceTracks);
         return trackModels;
     }

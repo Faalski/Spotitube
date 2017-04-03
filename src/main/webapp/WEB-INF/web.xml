@@ -12,8 +12,6 @@
 >
     <display-name>Archetype Created Web Application</display-name>
 
-
-
     <servlet>
         <servlet-name>ViewPlaylist</servlet-name>
         <servlet-class>Presentation.ViewPlaylistsController</servlet-class>
@@ -37,6 +35,10 @@
     <servlet>
         <servlet-name>CreatePlaylist</servlet-name>
         <servlet-class>Presentation.CreatePlaylistController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddTrackToPlayList</servlet-name>
+        <servlet-class>Presentation.AddTrackToPlayList</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -63,11 +65,12 @@
         <servlet-name>CreatePlaylist</servlet-name>
         <url-pattern>/CreatePlaylist</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTrackToPlayList</servlet-name>
+        <url-pattern>/AddTrackToPlayList</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>start.jsp</welcome-file>
     </welcome-file-list>
-
-
-
 </web-app>

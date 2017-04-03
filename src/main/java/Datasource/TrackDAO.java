@@ -21,7 +21,7 @@ public class TrackDAO extends MainDAO {
 
     public List<Track> getTracks() throws SQLException {
         try{
-            final String sql = "SELECT t.performer, t.title, t.url, t.duration, t.soort, t.album, t.playcount, t.publicationdate, t.description FROM Track t INNER JOIN TrackInPlaylist tip ON t.title = tip.track AND t.performer = tip.performer";
+            final String sql = "SELECT performer, title, url, duration, soort, album, playcount, publicationdate, description FROM Track";
             retrieveTracksFromDatabase(sql, null);
         } catch (SQLException e) {
             raiseError(e);
@@ -33,7 +33,6 @@ public class TrackDAO extends MainDAO {
     public List<Track> getTracksByPlaylist(String playlist) {
         String [] sqlvariables = {playlist};
         try {
-
             final String sql = "SELECT t.performer, t.title, t.url, t.duration, t.soort, t.album, t.playcount, t.publicationdate, t.description FROM Track t INNER JOIN TrackInPlaylist tip ON t.title = tip.track AND t.performer = tip.performer WHERE tip.playlist = ?";
             retrieveTracksFromDatabase(sql, sqlvariables);
         } catch (SQLException e) {
@@ -42,6 +41,19 @@ public class TrackDAO extends MainDAO {
 
         return tracks;
     }
+
+    public List<Track> getTracksByName(String name){
+        tracks = clearTrackValues(tracks);
+        String [] sqlvariables = {name};
+        try {
+            final String sql = "SELECT performer, title, url, duration, soort, album, playcount, publicationdate, description FROM Track WHERE title LIKE '%' ? '%'";
+            retrieveTracksFromDatabase(sql, sqlvariables);
+        } catch(SQLException e){
+            raiseError(e);
+        }
+        return tracks;
+    }
+
     public void retrieveTracksFromDatabase(String sql, String[] sqlvariables) throws SQLException {
         Connection connection = openConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -51,8 +63,8 @@ public class TrackDAO extends MainDAO {
     }
 
     private void retrieveTracks(PreparedStatement statement) throws SQLException {
-        ResultSet resultSet = statement.executeQuery();
 
+        ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
             if (resultSet.getString("soort").equals("song")) {
                 Track song = new Song(resultSet.getString("performer"), resultSet.getString("title"), resultSet.getString("url"), resultSet.getLong("duration"), resultSet.getString("album"));
@@ -65,25 +77,4 @@ public class TrackDAO extends MainDAO {
             }
         }
     }
-
-    public List<Track> getAllTracks(){
-        List<Track> tempTrack = new ArrayList<Track>();
-        try {
-            Connection connection = DriverManager.getConnection(databaseproperties.connectionString());
-            final String sql = "SELECT performer, title, url, duration FROM Track";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()){
-                Track track = new Track(resultSet.getString("performer"), resultSet.getString("title"), resultSet.getString("url"), resultSet.getLong("duration"), "owner");
-                tempTrack.add(track);
-            }
-            statement.close();
-            connection.close();
-        } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Error communicating with database " + databaseproperties.connectionString(), e);
-        }
-        return tempTrack;
-    }
-
-
 }
