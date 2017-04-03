@@ -84,4 +84,19 @@ public class PlaylistDAO extends MainDAO {
             raiseError(e);
         }
     }
+
+    @Override
+    public void AddNewTrackToPlayList(String trackname, String performer, String playlist){
+        String[] sqlvariables = {trackname, performer, playlist};
+        try{
+            Connection connection = openConnection();
+            final String sql = "INSERT INTO TrackInPlaylist VALUES(?,?,?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement = statementSetString(sqlvariables, statement);
+            statement.executeUpdate();
+            closeConnection(statement, connection);
+        } catch (SQLException e){
+            raiseError(e);
+        }
+    }
 }

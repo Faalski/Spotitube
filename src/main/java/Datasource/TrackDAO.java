@@ -36,7 +36,6 @@ public class TrackDAO extends MainDAO {
 
         String [] sqlvariables = {playlist};
         try {
-
             final String sql = "SELECT t.performer, t.title, t.url, t.duration, t.soort, t.album, t.playcount, t.publicationdate, t.description FROM Track t INNER JOIN TrackInPlaylist tip ON t.title = tip.track AND t.performer = tip.performer WHERE tip.playlist = ?";
             retrieveTracksFromDatabase(sql, sqlvariables);
         } catch (SQLException e) {
@@ -59,6 +58,19 @@ public class TrackDAO extends MainDAO {
             raiseError(e);
         }
     }
+
+    public List<Track> getTracksByName(String name){
+        tracks = clearTrackValues(tracks);
+        String [] sqlvariables = {name};
+        try {
+            final String sql = "SELECT performer, title, url, duration, soort, album, playcount, publicationdate, description FROM Track WHERE title LIKE '%' ? '%'";
+            retrieveTracksFromDatabase(sql, sqlvariables);
+        } catch(SQLException e){
+            raiseError(e);
+        }
+        return tracks;
+    }
+
     public void retrieveTracksFromDatabase(String sql, String[] sqlvariables) throws SQLException {
         Connection connection = openConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -70,8 +82,8 @@ public class TrackDAO extends MainDAO {
 
 
     private void retrieveTracks(PreparedStatement statement) throws SQLException {
-        ResultSet resultSet = statement.executeQuery();
 
+        ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
 
             if (resultSet.getString("soort").equals("song")) {

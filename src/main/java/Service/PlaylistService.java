@@ -32,6 +32,9 @@ public class PlaylistService {
         return playlists;
     }
 
+    public void AddTrackToPlayList(String trackname, String performer, String playlist){
+        playlistDAO.AddNewTrackToPlayList(trackname, performer, playlist);
+    }
 
     public void changePlaylistName(String newplaylistname, String oldplaylistname) {
         playlistDAO.changePlaylistName(newplaylistname, oldplaylistname);

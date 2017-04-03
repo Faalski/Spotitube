@@ -35,4 +35,9 @@ public class TrackService {
             e.printStackTrace();
         }
     }
+
+    public List<Track> getTracksByName(String name) throws SQLException {
+        tracks = trackDAO.getTracksByName(name);
+        return tracks;
+    }
 }
