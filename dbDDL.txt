@@ -22,5 +22,5 @@ CREATE TABLE Playlist (
     INSERT INTO Track(performer, title, url, duration, playlist) VALUES('Bankenloos', 'Zonder banken', 'testurl.nl', '2:10', NULL)
 
     SELECT * FROM Track
-     INSERT INTO Playlist(owner, name) VALUES ('harry', 'de harrylijstdeel2')
+    INSERT INTO Playlist(owner, name) VALUES ('harry', 'de harrylijstdeel2')
     INSERT INTO Playlist(owner, name) VALUES ('sjimmie', 'sjimmies sjimmies')
