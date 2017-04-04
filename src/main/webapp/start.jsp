@@ -8,7 +8,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>HALLO</h1>
-        <a href="/Spotitube/ViewPlaylist" type="button">Klik</a>
+        <form method="post" action="Login">
+            Username :<input type="text" name="user" /><br/><br/>
+            Password :<input type="password" name="pass" /><br/><br/>
+            <input type="submit" value="Login" />
+        </form>
     </body>
 </html>
