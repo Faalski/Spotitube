@@ -28,8 +28,6 @@ public class ViewPlaylistsController extends HttpServlet {
     String owner = "harry";
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RestResourceConfig rrc = new RestResourceConfig();
-
         List<PlaylistModel> playlistmodels = new ArrayList<PlaylistModel>();
         playlistmodels = pm.getAllPlaylists(owner);
         request.setAttribute("playlists", playlistmodels);
@@ -57,13 +55,7 @@ public class ViewPlaylistsController extends HttpServlet {
             }
         }
         else if(request.getParameter("addTrack") != null) {
-            try {
-                trackmodels = tm.getTracks();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            request.setAttribute("tracks", trackmodels);
-            request.getRequestDispatcher("/ViewTracks.jsp").forward(request, response);
+            response.sendRedirect("SearchTracks");
         }
     }
 

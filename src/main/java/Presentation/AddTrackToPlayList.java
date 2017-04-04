@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -23,10 +24,10 @@ public class AddTrackToPlayList extends HttpServlet {
     private List<TrackModel> trackmodels;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RestResourceConfig rrc = new RestResourceConfig();
         String tn = request.getParameter("TrackName");
         String pn = request.getParameter("PerformerName");
-        String pl = "kaklijst";
+        HttpSession s =request.getSession();
+        String pl = (String)s.getAttribute("playlistname");
         try {
             pm.AddTrackToPlayList(tn, pn, pl);
             trackmodels = tm.getTracks();

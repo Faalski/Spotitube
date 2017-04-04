@@ -61,15 +61,6 @@ public class MainDAO {
         return list;
     }
 
-    public List<Track> clearTrackValues(List<Track> list) {
-        Iterator<Track> it = list.iterator();
-        while (it.hasNext()) {
-            Track p = it.next();
-                it.remove();
-        }
-        return list;
-    }
-
     public PreparedStatement statementSetString(String[] sqlvariables, PreparedStatement statement) throws SQLException {
         if (sqlvariables != null) {
             for (int i=0; i < sqlvariables.length; i++) {

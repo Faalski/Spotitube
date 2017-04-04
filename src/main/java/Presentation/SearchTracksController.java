@@ -3,7 +3,6 @@ package Presentation;
 import Model.PlaylistModel;
 import Model.TrackModel;
 import Service.RestResourceConfig;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +23,6 @@ public class SearchTracksController extends HttpServlet {
     private List<TrackModel> trackmodels;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RestResourceConfig rrc = new RestResourceConfig();
         try{
             trackmodels = tm.getTracks();
         }catch(SQLException e){
@@ -35,7 +33,7 @@ public class SearchTracksController extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            RestResourceConfig rrc = new RestResourceConfig();
+        if(request.getParameter("searchInput") != null) {
             String input = request.getParameter("SearchInput");
             try {
                 trackmodels = tm.getTracksByName(input);
@@ -45,6 +43,11 @@ public class SearchTracksController extends HttpServlet {
 
             request.setAttribute("tracks", trackmodels);
             request.getRequestDispatcher("/SearchTracks.jsp").forward(request, response);
+        }
+        else if (request.getParameter("goToPlaylist") != null) {
+            response.sendRedirect("ViewTracksFromPlaylist");
+        }
+
 
     }
 }
