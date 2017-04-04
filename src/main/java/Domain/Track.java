@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by Lars on 24-3-2017.
  */
-public class Track {
+public class Track extends IsOfflineAvailable{
     public String performer;
     public String title;
     public String url;
@@ -21,6 +21,7 @@ public class Track {
         this.url = url;
         this.duration = duration;
         this.album = album;
+
     }
 
     public Track(String performer, String title, String url, long duration, int playcount, Date publication_date, String description) {
@@ -36,4 +37,21 @@ public class Track {
     public String getPerformer() {
         return performer;
     }
+
+    @Override
+    public void toggle() {
+        if (offlineAvailable) {
+            offlineAvailable = false;
+        }
+        else {
+            offlineAvailable = true;
+        }
+    }
+
+    @Override
+    public boolean isOfflineAvailable() {
+        return offlineAvailable;
+    }
+
+
 }
