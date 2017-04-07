@@ -2,7 +2,7 @@ package Presentation;
 
 import Model.PlaylistModel;
 import Model.TrackModel;
-import Service.RestResourceConfig;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,9 +14,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by dimitri on 30-3-17.
- */
+/*Hier begint Functional Requirement 2*/
 @WebServlet(urlPatterns = "/AddTrackToPlayList")
 public class AddTrackToPlayList extends HttpServlet {
     private PlaylistModel pm = new PlaylistModel();

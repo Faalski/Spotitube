@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by Lars on 27-3-2017.
- */
+/*Hier begint Functional Requirement 3*/
 @WebServlet(urlPatterns = "/ChangePlaylistName")
 public class ChangePlaylistNameController extends HttpServlet {
     PlaylistModel pm = new PlaylistModel();

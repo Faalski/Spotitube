@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Lars on 24-3-2017.
  */
-public class TrackModel {
+public class TrackModel extends IsOfflineAvailableModel {
     String performer;
     String title;
     String url;
@@ -61,6 +61,7 @@ public class TrackModel {
         sm.setUrl(t.url);
         sm.setDuration(t.duration);
         sm.setAlbum(t.album);
+        sm.setOfflineAvailable(t.isOfflineAvailable());
         trackModels.add(sm);
     }
 
@@ -73,6 +74,7 @@ public class TrackModel {
         vm.setPlaycount(t.playcount);
         vm.setPublication_date(t.publication_date);
         vm.setDescription(t.description);
+        vm.setOfflineAvailable(t.isOfflineAvailable());
         trackModels.add(vm);
     }
     public void deleteTrackFromPlaylist(String title, String performer, String playlist) {
@@ -108,5 +110,27 @@ public class TrackModel {
     public String getDescription() {return "";}
 
 
+    public void changeAvailability(TrackModel tm, String playlist) throws SQLException {
+        String tracktitle;
+        String trackperformer;
+        String isOffline;
+        tm.toggle();
+            tracktitle = tm.getTitle();
+            trackperformer = tm.getPerformer();
+            if(tm.isOfflineAvailable()) {
+                isOffline = "true";
+            }
+            else {
+                isOffline = "false";
+            }
+        ts.changeAvailability(tracktitle, trackperformer, isOffline, playlist);
 
+    }
+
+    public void setOfflineAvailable(boolean offlineAvailable) {
+        this.offlineAvailable = offlineAvailable;
+    }
+    public boolean getOfflineAvailable() {
+        return isOfflineAvailable();
+    }
 }

@@ -9,13 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * Created by Lars on 29-3-2017.
- */
+/*Hier begint Functional Requirement 1*/
 @WebServlet(urlPatterns = "/CreatePlaylist")
 public class CreatePlaylistController extends HttpServlet {
     PlaylistModel pm = new PlaylistModel();
-    String owner = "harry";
 
     public CreatePlaylistController() {};
 
@@ -23,6 +20,7 @@ public class CreatePlaylistController extends HttpServlet {
         String playlistname = request.getParameter("newplaylist");
         HttpSession session=request.getSession(true);
         session.setAttribute("playlistname",playlistname);
+        String owner = (String)session.getAttribute("owner");
         String[] newPlaylistInfo = {owner, playlistname};
         pm.createNewPlaylist(newPlaylistInfo);
         response.sendRedirect("SearchTracks");

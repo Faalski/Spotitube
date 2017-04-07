@@ -11,7 +11,7 @@ import java.sql.SQLException;
 /**
  * Created by dimitri on 4-4-17.
  */
-public class LoginDAO extends MainDAO{
+public class LoginDAO extends MainDAO implements InterfaceDAO{
 
     public LoginDAO(DatabaseProperties databaseProperties) {
         super(databaseProperties);
@@ -33,7 +33,7 @@ public class LoginDAO extends MainDAO{
         return temp;
     }
 
-    private boolean retrieveLogin(PreparedStatement statement) throws SQLException {
+    public boolean retrieveLogin(PreparedStatement statement) throws SQLException {
         ResultSet resultSet = statement.executeQuery();
         return resultSet.next();
     }

@@ -40,4 +40,9 @@ public class TrackService {
         tracks = trackDAO.getTracksByName(name);
         return tracks;
     }
+
+    public void changeAvailability(String tracktitle, String trackperformer, String isOffline, String playlist) throws SQLException {
+        trackDAO.changeAvailability(tracktitle, trackperformer, isOffline, playlist);
+
+    }
 }
