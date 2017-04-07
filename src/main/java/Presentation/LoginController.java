@@ -1,8 +1,6 @@
 package Presentation;
 
 import Model.LoginModel;
-import Model.PlaylistModel;
-import Service.RestResourceConfig;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 
 /**
  * Created by Lars on 27-3-2017.
@@ -30,7 +26,7 @@ public class LoginController extends HttpServlet {
         if(canLog){
             HttpSession session=request.getSession(true);
             session.setAttribute("owner",user);
-            request.getRequestDispatcher("/ViewPlaylist.jsp").forward(request, response);
+            response.sendRedirect("ViewPlaylist");
         } else {
             request.getRequestDispatcher("/start.jsp").forward(request, response);
         }

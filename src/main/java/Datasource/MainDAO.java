@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 /**
  * Created by Lars on 28-3-2017.
  */
-public class MainDAO {
+public class MainDAO implements InterfaceDAO{
     private Logger logger = Logger.getLogger(getClass().getName());
     private final DatabaseProperties databaseproperties;
     List<Track> tracks = new ArrayList<Track>();
@@ -29,7 +29,7 @@ public class MainDAO {
         tryLoadJdbcDriver(databaseProperties);
     }
 
-    private void tryLoadJdbcDriver(DatabaseProperties databaseProperties) {
+    public void tryLoadJdbcDriver(DatabaseProperties databaseProperties) {
         try {
             Class.forName(databaseProperties.driver());
         } catch (ClassNotFoundException e) {
@@ -64,7 +64,16 @@ public class MainDAO {
     public PreparedStatement statementSetString(String[] sqlvariables, PreparedStatement statement) throws SQLException {
         if (sqlvariables != null) {
             for (int i=0; i < sqlvariables.length; i++) {
-                statement.setString(i+1, sqlvariables[i]);
+                if(sqlvariables[i].equals("true")) {
+                    statement.setBoolean(i+1, true);
+                }
+                else if (sqlvariables[i].equals("false")) {
+                    statement.setBoolean(i+1, false);
+                }
+                else {
+                    statement.setString(i+1, sqlvariables[i]);
+                }
+
             }
         }
         return statement;
@@ -105,6 +114,21 @@ public class MainDAO {
 
     public List<Track> getTracksByName(String name) throws SQLException {
         return tracks;
+    }
+
+    public void changeAvailability(String tracktitle, String trackperformer, String isOffline, String playlist) throws SQLException {
+    }
+
+    public boolean checkForLoginData(String user, String pass) {
+        return false;
+    }
+
+    public boolean retrieveLogin(PreparedStatement statement) throws SQLException {
+        return false;
+    }
+
+    public void retrievePlaylists(PreparedStatement statement, String owner) throws SQLException {
+
     }
 }
 

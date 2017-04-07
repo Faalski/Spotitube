@@ -11,7 +11,6 @@ import Domain.Playlist;
 import Model.PlaylistModel;
 
 public class PlaylistDAO extends MainDAO {
-    List<Playlist> playlists = new ArrayList<Playlist>();
     private Logger logger = Logger.getLogger(getClass().getName());
 
     public PlaylistDAO(DatabaseProperties databaseProperties) {
@@ -33,8 +32,8 @@ public class PlaylistDAO extends MainDAO {
         }
         return playlists;
     }
-
-    private void retrievePlaylists(PreparedStatement statement, String owner) throws SQLException {
+    @Override
+    public void retrievePlaylists(PreparedStatement statement, String owner) throws SQLException {
         playlists = clearPlaylistValues(playlists, owner);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
@@ -90,7 +89,7 @@ public class PlaylistDAO extends MainDAO {
         String[] sqlvariables = {trackname, performer, playlist};
         try{
             Connection connection = openConnection();
-            final String sql = "INSERT INTO TrackInPlaylist VALUES(?,?,?)";
+            final String sql = "INSERT INTO TrackInPlaylist VALUES(?,?,?, false)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement = statementSetString(sqlvariables, statement);
             statement.executeUpdate();

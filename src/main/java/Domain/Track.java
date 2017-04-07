@@ -54,4 +54,7 @@ public class Track extends IsOfflineAvailable{
     }
 
 
+    public void setOfflineAvailable(boolean offlineAvailable) {
+        this.offlineAvailable = offlineAvailable;
+    }
 }

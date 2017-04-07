@@ -2,7 +2,6 @@ package Model;
 
 import Domain.Playlist;
 import Service.PlaylistService;
-import Service.RestResourceConfig;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
