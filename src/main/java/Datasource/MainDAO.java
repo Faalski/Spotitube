@@ -15,9 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Created by Lars on 28-3-2017.
- */
+
 public class MainDAO implements InterfaceDAO{
     private Logger logger = Logger.getLogger(getClass().getName());
     private final DatabaseProperties databaseproperties;

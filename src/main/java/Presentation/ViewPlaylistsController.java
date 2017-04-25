@@ -2,7 +2,6 @@ package Presentation;
 
 import Model.PlaylistModel;
 import Model.TrackModel;
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,12 +14,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Lars on 23-3-2017.
- */
+
 public class ViewPlaylistsController extends HttpServlet {
     PlaylistModel pm = new PlaylistModel();
-    private TrackModel tm = new TrackModel();
     List<TrackModel> trackmodels = new ArrayList<TrackModel>();
     String owner;
 
@@ -36,7 +32,7 @@ public class ViewPlaylistsController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String playlist = request.getParameter("playlistname");
         HttpSession session=request.getSession();
-        session.setAttribute("playlistname",playlist);
+        session.setAttribute("playlistname", playlist);
         session.setAttribute("checktracks", trackmodels);
 
         if(request.getParameter("changename") != null) {

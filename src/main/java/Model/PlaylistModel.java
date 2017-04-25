@@ -7,17 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Lars on 21-3-2017.
- */
 public class PlaylistModel {
     String owner;
     String name;
     PlaylistService ps = new PlaylistService();
-
-    public PlaylistModel() {
-
-    }
 
     public List<PlaylistModel> getAllPlaylists(String owner) {
         List<Playlist> serviceplaylists = ps.getAllPlaylists(owner);
@@ -32,9 +25,6 @@ public class PlaylistModel {
         return playlistModels;
     }
 
-    public void AddTrackToPlayList(String trackname, String performer, String playlist) throws SQLException {
-        ps.AddTrackToPlayList(trackname, performer, playlist);
-    }
 
     public void changePlaylistName(String newplaylistname, String oldplaylistname) {
         ps.changePlaylistName(newplaylistname, oldplaylistname);
@@ -59,7 +49,5 @@ public class PlaylistModel {
     }
 
     public String getOwner() { return owner;}
-
-
 
 }

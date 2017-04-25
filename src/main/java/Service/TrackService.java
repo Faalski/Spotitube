@@ -8,9 +8,6 @@ import Domain.Track;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by Lars on 24-3-2017.
- */
 public class TrackService {
     MainDAO trackDAO;
     List<Track> tracks;
@@ -43,6 +40,9 @@ public class TrackService {
 
     public void changeAvailability(String tracktitle, String trackperformer, String isOffline, String playlist) throws SQLException {
         trackDAO.changeAvailability(tracktitle, trackperformer, isOffline, playlist);
+    }
 
+    public void AddTrackToPlayList(String trackname, String performer, String playlist){
+        trackDAO.AddNewTrackToPlayList(trackname, performer, playlist);
     }
 }

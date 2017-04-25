@@ -10,9 +10,6 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Lars on 24-3-2017.
- */
 public class TrackModel extends IsOfflineAvailableModel {
     String performer;
     String title;
@@ -23,6 +20,7 @@ public class TrackModel extends IsOfflineAvailableModel {
     List<Track> serviceTracks = new ArrayList<Track>();
 
     public List<TrackModel> getTracksFromPlaylist(String playlist) {
+        trackModels.clear();
         serviceTracks = ts.getTracksFromPlaylist(playlist);
         fillTracks(serviceTracks);
         return trackModels;
@@ -80,6 +78,26 @@ public class TrackModel extends IsOfflineAvailableModel {
     public void deleteTrackFromPlaylist(String title, String performer, String playlist) {
         ts.deleteTrackFromPlaylist(title, performer, playlist);
     }
+    public void changeAvailability(TrackModel tm, String playlist) throws SQLException {
+        String tracktitle;
+        String trackperformer;
+        String isOffline;
+        tm.toggle();
+        tracktitle = tm.getTitle();
+        trackperformer = tm.getPerformer();
+        if(tm.isOfflineAvailable()) {
+            isOffline = "true";
+        }
+        else {
+            isOffline = "false";
+        }
+        ts.changeAvailability(tracktitle, trackperformer, isOffline, playlist);
+
+    }
+
+    public void AddTrackToPlayList(String trackname, String performer, String playlist) throws SQLException {
+        ts.AddTrackToPlayList(trackname, performer, playlist);
+    }
 
     public void setPerformer(String performer) {
         this.performer = performer;
@@ -106,31 +124,18 @@ public class TrackModel extends IsOfflineAvailableModel {
     public long getDuration() {return duration;}
     public String getAlbum() {return "";}
     public int getPlaycount() {return 0;}
-    public Date getPublication_date() {return new Date();}
+    public Date getPublication_date() {return null;}
     public String getDescription() {return "";}
-
-
-    public void changeAvailability(TrackModel tm, String playlist) throws SQLException {
-        String tracktitle;
-        String trackperformer;
-        String isOffline;
-        tm.toggle();
-            tracktitle = tm.getTitle();
-            trackperformer = tm.getPerformer();
-            if(tm.isOfflineAvailable()) {
-                isOffline = "true";
-            }
-            else {
-                isOffline = "false";
-            }
-        ts.changeAvailability(tracktitle, trackperformer, isOffline, playlist);
-
-    }
-
-    public void setOfflineAvailable(boolean offlineAvailable) {
-        this.offlineAvailable = offlineAvailable;
-    }
     public boolean getOfflineAvailable() {
         return isOfflineAvailable();
     }
+    public void setOfflineAvailable(boolean offlineAvailable) {
+        this.offlineAvailable = offlineAvailable;
+    }
+
+
+
+
+
+
 }

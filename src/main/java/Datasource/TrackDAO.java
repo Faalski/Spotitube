@@ -24,7 +24,7 @@ public class TrackDAO extends MainDAO {
         tracks = clearTrackValues(tracks);
         try{
             final String sql = "SELECT t.performer, t.title, t.url, t.duration, t.soort, t.album, t.playcount, t.publicationdate, t.description FROM Track t";
-            retrieveTracksFromDatabase(sql, null);
+            retrieveTracksFromDatabase(sql, null, "algemeen");
         } catch (SQLException e) {
             raiseError(e);
         }
@@ -37,7 +37,7 @@ public class TrackDAO extends MainDAO {
         String [] sqlvariables = {playlist};
         try {
             final String sql = "SELECT t.performer, t.title, t.url, t.duration, t.soort, t.album, t.playcount, t.publicationdate, t.description, tip.offlineAvailable FROM Track t INNER JOIN TrackInPlaylist tip ON t.title = tip.track AND t.performer = tip.performer WHERE tip.playlist = ?";
-            retrieveTracksFromDatabase(sql, sqlvariables);
+            retrieveTracksFromDatabase(sql, sqlvariables, "playlist");
         } catch (SQLException e) {
             raiseError(e);
         }
@@ -64,11 +64,26 @@ public class TrackDAO extends MainDAO {
         String [] sqlvariables = {name};
         try {
             final String sql = "SELECT performer, title, url, duration, soort, album, playcount, publicationdate, description FROM Track WHERE title LIKE '%' ? '%'";
-            retrieveTracksFromDatabase(sql, sqlvariables);
+            retrieveTracksFromDatabase(sql, sqlvariables, "algemeen");
         } catch(SQLException e){
             raiseError(e);
         }
         return tracks;
+    }
+
+    @Override
+    public void AddNewTrackToPlayList(String trackname, String performer, String playlist){
+        String[] sqlvariables = {trackname, performer, playlist};
+        try{
+            Connection connection = openConnection();
+            final String sql = "INSERT INTO TrackInPlaylist VALUES(?,?,?, false)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement = statementSetString(sqlvariables, statement);
+            statement.executeUpdate();
+            closeConnection(statement, connection);
+        } catch (SQLException e){
+            raiseError(e);
+        }
     }
     @Override
     public void changeAvailability(String tracktitle, String trackperformer, String isOffline, String playlist) throws SQLException {
@@ -84,27 +99,31 @@ public class TrackDAO extends MainDAO {
 
     }
 
-    public void retrieveTracksFromDatabase(String sql, String[] sqlvariables) throws SQLException {
+    public void retrieveTracksFromDatabase(String sql, String[] sqlvariables, String context) throws SQLException {
         Connection connection = openConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement = statementSetString(sqlvariables, statement);
-        retrieveTracks(statement);
+        retrieveTracks(statement, context);
         closeConnection(statement, connection);
     }
 
-    private void retrieveTracks(PreparedStatement statement) throws SQLException {
+    private void retrieveTracks(PreparedStatement statement, String context) throws SQLException {
 
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
 
             if (resultSet.getString("soort").equals("song")) {
                 Track song = new Song(resultSet.getString("performer"), resultSet.getString("title"), resultSet.getString("url"), resultSet.getLong("duration"), resultSet.getString("album"));
-                song.setOfflineAvailable(resultSet.getBoolean("offlineavailable"));
+                if(context.equals("playlist")) {
+                    song.setOfflineAvailable(resultSet.getBoolean("offlineavailable"));
+                }
                 tracks.add(song);
             }
             else if (resultSet.getString("soort").equals("video")) {
                 Track video = new Video(resultSet.getString("performer"), resultSet.getString("title"), resultSet.getString("url"), resultSet.getLong("duration"), resultSet.getInt("playcount"), resultSet.getDate("publicationdate"), resultSet.getString("description"));
-                video.setOfflineAvailable(resultSet.getBoolean("offlineavailable"));
+                if(context.equals("playlist")) {
+                    video.setOfflineAvailable(resultSet.getBoolean("offlineavailable"));
+                }
                 tracks.add(video);
             }
         }
