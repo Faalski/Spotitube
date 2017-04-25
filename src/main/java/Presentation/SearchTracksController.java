@@ -11,10 +11,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by dimitri on 27-3-17.
- */
-@WebServlet(urlPatterns = "/SearchTracks")
 public class SearchTracksController extends HttpServlet {
     private TrackModel tm = new TrackModel();
     private List<TrackModel> trackmodels;
@@ -31,7 +27,8 @@ public class SearchTracksController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /*Hier begint Functional Requirement 5*/
-        if(request.getParameter("searchInput") != null) {
+
+        if(request.getParameter("submitInput") != null) {
             String input = request.getParameter("SearchInput");
             try {
                 trackmodels = tm.getTracksByName(input);
@@ -44,6 +41,9 @@ public class SearchTracksController extends HttpServlet {
         }
         else if (request.getParameter("goToPlaylist") != null) {
             response.sendRedirect("ViewTracksFromPlaylist");
+        }
+        else if (request.getParameter("filter") != null) {
+            response.sendRedirect("SearchTracks");
         }
 
 

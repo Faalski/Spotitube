@@ -46,7 +46,7 @@ public class PlaylistDAOTest {
         testplaylists.add(zes);
 
         List<Playlist> playlists = (playlistDAO.getPlaylistsByOwner("harry"));
-        assertThat(testplaylists, is(playlists));
+        assertThat(playlists, is(testplaylists));
     }
 
 }

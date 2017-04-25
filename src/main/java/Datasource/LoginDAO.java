@@ -8,9 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by dimitri on 4-4-17.
- */
 public class LoginDAO extends MainDAO implements InterfaceDAO{
 
     public LoginDAO(DatabaseProperties databaseProperties) {

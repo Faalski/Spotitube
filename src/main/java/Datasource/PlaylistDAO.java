@@ -43,10 +43,10 @@ public class PlaylistDAO extends MainDAO {
     }
     @Override
     public void changePlaylistName(String newplaylistname, String oldplaylistname) {
-        String[] sqlvariables = {newplaylistname, oldplaylistname,};
+        String[] sqlvariables = {newplaylistname, newplaylistname, oldplaylistname, oldplaylistname};
         try {
             Connection connection = openConnection();
-            final String sql = "UPDATE Playlist SET name = ? WHERE name = ?";
+            final String sql = "UPDATE Playlist p, TrackInPlaylist tip SET p.name = ?, tip.playlist = ? WHERE p.name = ? AND tip.playlist = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement = statementSetString(sqlvariables, statement );
             statement.executeUpdate();
@@ -80,21 +80,6 @@ public class PlaylistDAO extends MainDAO {
             statement.executeUpdate();
             closeConnection(statement, connection);
         } catch (SQLException e) {
-            raiseError(e);
-        }
-    }
-
-    @Override
-    public void AddNewTrackToPlayList(String trackname, String performer, String playlist){
-        String[] sqlvariables = {trackname, performer, playlist};
-        try{
-            Connection connection = openConnection();
-            final String sql = "INSERT INTO TrackInPlaylist VALUES(?,?,?, false)";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement = statementSetString(sqlvariables, statement);
-            statement.executeUpdate();
-            closeConnection(statement, connection);
-        } catch (SQLException e){
             raiseError(e);
         }
     }

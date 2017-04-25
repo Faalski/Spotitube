@@ -1,11 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: dimitri
-  Date: 27-3-17
-  Time: 23:23
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,10 +7,11 @@
 </head>
 <body>
 <p>Search track by title: </p>
-<form action="/Spotitube/SearchTracks" method="post">
+<form action="/SearchTracks" method="post">
     <input type="text" name="SearchInput">
-    <input type="submit" name="submitInput" value="voeg toe">
+    <input type="submit" name="submitInput" value="zoek">
     <input type="submit" name="goToPlaylist" value="ga naar playlist">
+    <input type="submit" name="filter" value="filter">
 </form>
 <table border="1">
     <tr>
@@ -32,7 +27,7 @@
             <td><c:out value="${current.title}"/></td>
             <td><c:out value="${current.duration}"/></td>
             <td><c:out value="${current.url}"/></td>
-            <td><form action="/Spotitube/AddTrackToPlayList" method="post"><input type="hidden" name="TrackName" value="${current.title}"><input type="hidden" name="PerformerName" value="${current.performer}"><input type="submit" name="submitInput"></form></td>
+            <td><form action="/AddTrackToPlayList" method="post"><input type="hidden" name="TrackName" value="${current.title}"><input type="hidden" name="PerformerName" value="${current.performer}"><input type="submit" name="submitInput"></form></td>
         </tr>
     </c:forEach>
 </table>

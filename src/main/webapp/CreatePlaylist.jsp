@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Title</title>
-    <form action="/Spotitube/CreatePlaylist" method="post">
+    <form action="/CreatePlaylist" method="post">
         <input type="text" name="newplaylist">
         <input type="submit" name="submitbutton">
     </form>
