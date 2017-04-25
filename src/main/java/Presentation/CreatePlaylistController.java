@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /*Hier begint Functional Requirement 1*/
-@WebServlet(urlPatterns = "/CreatePlaylist")
 public class CreatePlaylistController extends HttpServlet {
     PlaylistModel pm = new PlaylistModel();
 

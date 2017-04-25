@@ -15,7 +15,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 /*Hier begint Functional Requirement 2*/
-@WebServlet(urlPatterns = "/AddTrackToPlayList")
 public class AddTrackToPlayList extends HttpServlet {
     private PlaylistModel pm = new PlaylistModel();
     private TrackModel tm = new TrackModel();

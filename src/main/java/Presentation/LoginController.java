@@ -13,7 +13,6 @@ import java.io.IOException;
 /**
  * Created by Lars on 27-3-2017.
  */
-@WebServlet(urlPatterns = "/Login")
 public class LoginController extends HttpServlet {
     LoginModel lm = new LoginModel();
     boolean canLog;

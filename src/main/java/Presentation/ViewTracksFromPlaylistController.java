@@ -19,7 +19,6 @@ import java.util.jar.Pack200;
 /**
  * Created by Lars on 30-3-2017.
  */
-@WebServlet("/ViewTracksFromPlaylist")
 public class ViewTracksFromPlaylistController extends HttpServlet {
     List<TrackModel> trackmodels = new ArrayList<TrackModel>();
     private TrackModel tm = new TrackModel();

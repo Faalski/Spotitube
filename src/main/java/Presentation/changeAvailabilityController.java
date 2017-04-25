@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/ChangeAvailability")
 public class changeAvailabilityController extends HttpServlet {
 
 

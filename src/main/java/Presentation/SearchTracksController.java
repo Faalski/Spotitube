@@ -14,7 +14,6 @@ import java.util.List;
 /**
  * Created by dimitri on 27-3-17.
  */
-@WebServlet(urlPatterns = "/SearchTracks")
 public class SearchTracksController extends HttpServlet {
     private TrackModel tm = new TrackModel();
     private List<TrackModel> trackmodels;

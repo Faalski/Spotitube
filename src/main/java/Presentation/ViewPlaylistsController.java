@@ -18,7 +18,6 @@ import java.util.List;
 /**
  * Created by Lars on 23-3-2017.
  */
-@WebServlet(urlPatterns = "/ViewPlaylist")
 public class ViewPlaylistsController extends HttpServlet {
     PlaylistModel pm = new PlaylistModel();
     private TrackModel tm = new TrackModel();

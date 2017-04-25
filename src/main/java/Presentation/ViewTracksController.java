@@ -14,7 +14,6 @@ import java.util.List;
 /**
  * Created by Lars on 24-3-2017.
  */
-@WebServlet(urlPatterns = "/ViewTracks")
 public class ViewTracksController extends HttpServlet {
 
 

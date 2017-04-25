@@ -7,7 +7,7 @@
 </head>
 <body>
 <c:forEach items="${tracksfromplaylist}" var="current">
-<form action="/Spotitube/ViewTracksFromPlaylist" method="post">
+<form action="/ViewTracksFromPlaylist" method="post">
 
         <input type="hidden" name="performer" value="<c:out value="${current.performer}"></c:out>">
         <c:out value="${current.performer}"></c:out>
