@@ -1,100 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5475e8d9-06c3-4f8f-bd88-7f3a67d22daf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_14_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_inject_guice_3_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_1_4_192.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_el_javax_el_api_2_2_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_inject_javax_inject_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_ws_rs_javax_ws_rs_api_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_asm_all_repackaged_2_2_0_b21.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_cglib_2_2_0_b21.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_javax_inject_2_2_0_b21.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_api_2_2_0_b21.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_locator_2_2_0_b21.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_utils_2_2_0_b21.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_osgi_resource_locator_1_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_containers_jersey_container_servlet_2_5_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_containers_jersey_container_servlet_core_2_5_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_client_2_5_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_common_2_5_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_server_2_5_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_web_javax_el_2_2_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_4_0_1_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_4_1_9_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_2_4_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_0_api_1_0_1_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_17_1_GA.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_1_0_GA.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_1_spec_1_0_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_all_1_9_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Datasource/Hibernate/LoginHibernate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Datasource/Hibernate/PlaylistHibernate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Datasource/Hibernate/TrackHibernate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Datasource/Hibernate/Util/HibernateUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Datasource/PlaylistInterface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Datasource/TrackInterface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Domain/Login.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Domain/TrackInPlaylist.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Spotitube/DataSourceGuiceModule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Spotitube/DummyData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/Presentation/SearchTracksControllerTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Datasource/Util/DatabaseProperties.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Model/IsOfflineAvailableModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Presentation/ViewTracksController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Spotitube/main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/test/PlaylistDAOTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/ViewTracks.jsp" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_39.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_22.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Datasource/InterfaceDAO.java" afterPath="$PROJECT_DIR$/src/main/java/Datasource/LoginInterface.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Datasource/LoginDAO.java" afterPath="$PROJECT_DIR$/src/main/java/Datasource/JDBC/LoginDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Datasource/MainDAO.java" afterPath="$PROJECT_DIR$/src/main/java/Datasource/JDBC/MainDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Datasource/PlaylistDAO.java" afterPath="$PROJECT_DIR$/src/main/java/Datasource/JDBC/PlaylistDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Datasource/TrackDAO.java" afterPath="$PROJECT_DIR$/src/main/java/Datasource/JDBC/TrackDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Service/RestResourceConfig.java" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Opleverdocumentatie/Oplever document.odt" afterPath="$PROJECT_DIR$/Opleverdocumentatie/Oplever document.odt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Spotitube_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Spotitube_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Spotitube.iml" afterPath="$PROJECT_DIR$/Spotitube.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Domain/IsOfflineAvailable.java" afterPath="$PROJECT_DIR$/src/main/java/Domain/IsOfflineAvailable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Domain/Playlist.java" afterPath="$PROJECT_DIR$/src/main/java/Domain/Playlist.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Domain/Song.java" afterPath="$PROJECT_DIR$/src/main/java/Domain/Song.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Domain/Track.java" afterPath="$PROJECT_DIR$/src/main/java/Domain/Track.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Domain/Video.java" afterPath="$PROJECT_DIR$/src/main/java/Domain/Video.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Model/LoginModel.java" afterPath="$PROJECT_DIR$/src/main/java/Model/LoginModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Model/PlaylistModel.java" afterPath="$PROJECT_DIR$/src/main/java/Model/PlaylistModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Model/SongModel.java" afterPath="$PROJECT_DIR$/src/main/java/Model/SongModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Model/TrackModel.java" afterPath="$PROJECT_DIR$/src/main/java/Model/TrackModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Model/VideoModel.java" afterPath="$PROJECT_DIR$/src/main/java/Model/VideoModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Presentation/AddTrackToPlayList.java" afterPath="$PROJECT_DIR$/src/main/java/Presentation/AddTrackToPlayList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Presentation/ChangePlaylistNameController.java" afterPath="$PROJECT_DIR$/src/main/java/Presentation/ChangePlaylistNameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Presentation/CreatePlaylistController.java" afterPath="$PROJECT_DIR$/src/main/java/Presentation/CreatePlaylistController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Presentation/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/Presentation/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Presentation/SearchTracksController.java" afterPath="$PROJECT_DIR$/src/main/java/Presentation/SearchTracksController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Presentation/ViewPlaylistsController.java" afterPath="$PROJECT_DIR$/src/main/java/Presentation/ViewPlaylistsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Presentation/ViewTracksFromPlaylistController.java" afterPath="$PROJECT_DIR$/src/main/java/Presentation/ViewTracksFromPlaylistController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Presentation/changeAvailabilityController.java" afterPath="$PROJECT_DIR$/src/main/java/Presentation/changeAvailabilityController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Service/LoginService.java" afterPath="$PROJECT_DIR$/src/main/java/Service/LoginService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Service/PlaylistService.java" afterPath="$PROJECT_DIR$/src/main/java/Service/PlaylistService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Service/TrackService.java" afterPath="$PROJECT_DIR$/src/main/java/Service/TrackService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/SearchTracks.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/SearchTracks.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/ViewPlaylist.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/ViewPlaylist.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/ChangePlaylistName.jsp" afterPath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/ChangePlaylistName.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/SearchTracks.jsp" afterPath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/SearchTracks.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/ViewPlaylist.jsp" afterPath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/ViewPlaylist.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/ViewTracksFromPlaylist.jsp" afterPath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/ViewTracksFromPlaylist.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/spotitube-1.0-SNAPSHOT/WEB-INF/web.xml" />
-    </list>
+    <list default="true" id="5475e8d9-06c3-4f8f-bd88-7f3a67d22daf" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -1380,7 +1287,7 @@
       <workItem from="1496769200762" duration="5201000" />
       <workItem from="1496774516300" duration="8557000" />
       <workItem from="1496821835360" duration="22000" />
-      <workItem from="1496859139808" duration="1374000" />
+      <workItem from="1496859139808" duration="1452000" />
     </task>
     <servers />
   </component>
@@ -1417,10 +1324,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50448000" />
+    <option name="totallyTimeSpent" value="50526000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1444,7 +1351,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31090724" sideWeight="0.6846361" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31090724" sideWeight="0.6846361" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1902965" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
