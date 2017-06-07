@@ -6,16 +6,48 @@
     <title>TracksFromPlaylist</title>
 </head>
 <body>
+<table border="1">
+        <tr>
+                <th>Performer</th>
+                <th>Title</th>
+                <th>Duration</th>
+                <th>url</th>
+                <th>album</th>
+                <th>playcount</th>
+                <th>publication_date</th>
+                <th>description</th>
+                <th>OfflineAvailable</th>
+                <th>Delete</th>
+                <th>ChangeAvailability</th>
+        </tr>
 <c:forEach items="${tracksfromplaylist}" var="current">
-<form action="/Spotitube/ViewTracksFromPlaylist" method="post">
+        <tr>
+                <td><c:out value="${current.performer}"/></td>
+                <td><c:out value="${current.title}"/></td>
+                <td><c:out value="${current.duration}"/></td>
+                <td><c:out value="${current.url}"/></td>
+                <td><c:out value="${current.album}"/></td>
+                <td><c:out value="${current.playcount}"/></td>
+                <td><c:out value="${current.publication_date}"/></td>
+                <td><c:out value="${current.description}"/></td>
+                <td><c:out value="${current.offlineAvailable}"/></td>
+                <td>
+                <form action="/ViewTracksFromPlaylist" method="post">
+                        <input type="hidden" name="performer" value="${current.performer}">
+                        <input type="hidden" name="title" value="${current.title}">
+                        <input type="submit" name="DeleteTrack" value="DeleteTrack"/>
 
-        <input type="hidden" name="performer" value="<c:out value="${current.performer}"></c:out>">
-        <c:out value="${current.performer}"></c:out>
-        <input type="hidden" name="title" value="<c:out value="${current.title}"></c:out>"><c:out value="${current.title}"></c:out>">
-        <input type="text" name="isoffline" value="<c:out value="${current.offlineAvailable}"></c:out>"><c:out value="${current.offlineAvailable}"></c:out>
-        <input type="submit" name="DeleteTrack" value="DeleteTrack"/>
-        <input type="submit" name="changeAvailability" value="changeAvailability"/>
-</form>
+                </form>
+                </td>
+                <td>
+                        <form action="/ViewTracksFromPlaylist" method="post">
+                                <input type="hidden" name="performer" value="${current.performer}">
+                                <input type="hidden" name="title" value="${current.title}">
+                                <input type="submit" name="changeAvailability" value="changeAvailability"/>
+                                </form>
+                </td>
+        </tr>
 </c:forEach>
+        <a href="/ViewPlaylist">Bekijk playlists</a>
 </body>
 </html>

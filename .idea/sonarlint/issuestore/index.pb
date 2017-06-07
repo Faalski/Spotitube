@@ -1,3 +1,23 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+O
+src\main\webapp\WEB-INF\web.xml,c\f\cfe67fbb2b19ed4a1292f6d91e148a922cf71401
+b
+2src\main\java\Presentation\AddTrackToPlayList.java,5\7\57a0dfb1bd551d3b7b5ac71f705d4b2a2c544f73
+P
+ src\main\webapp\ViewPlaylist.jsp,f\f\ff8cc9c23e5b38a36313085986cdabc4d6658f9d
+V
+&src\main\webapp\ChangePlaylistName.jsp,7\6\766d7bc25d6ec4d6fcd6071c13273368917d91c1
+R
+"src\main\webapp\CreatePlaylist.jsp,d\9\d994ef43cfc24a4a29a50bec3c65ab88dfe5158d
+I
+src\main\webapp\start.jsp,4\c\4c850f2f8cdcb4547ac31d77ff042bc9ce4bfdb6
+P
+ src\main\webapp\SearchTracks.jsp,6\e\6ee6a63e79c12e30a0a5904b52e6601eebfebb29
+Z
+*src\main\webapp\ViewTracksFromPlaylist.jsp,d\7\d73f544003bace6eec2507e947ccfc129d581e97
+_
+/src\main\java\Presentation\LoginController.java,a\6\a6c0ffb72b53045d719b0689386bb4d2bfc2523f
+Z
+*src\main\java\Service\PlaylistService.java,4\e\4e121148f0b31f7dd89ba408f43315bdbb8d4b7a

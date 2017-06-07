@@ -12,7 +12,7 @@
 <head>
     <title>Playlists</title> <br>
     <c:forEach items="${playlists}" var="current">
-    <form action="/Spotitube/ViewPlaylist" method="post">
+    <form action="/ViewPlaylist" method="post">
 
             <c:out value="${current.name}"/>
             <input type="submit" name="viewtracksfromplaylist" value="bekijk tracks"/>
@@ -23,7 +23,8 @@
     </form>
     </c:forEach>
 
-    <a href="/Spotitube/CreatePlaylist.jsp">Maak playlist</a>
+    <a href="/CreatePlaylist.jsp">Maak playlist</a>
+    <a href="/playlists/harry">Check JSON</a>
 
 
 
