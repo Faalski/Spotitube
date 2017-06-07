@@ -2,6 +2,7 @@ package Presentation;
 
 import Model.TrackModel;
 
+import javax.inject.Singleton;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,16 +12,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+@Singleton
 public class SearchTracksController extends HttpServlet {
     private TrackModel tm = new TrackModel();
     private List<TrackModel> trackmodels;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try{
-            trackmodels = tm.getTracks();
-        }catch(SQLException e){
-            System.out.println(e);
-        }
+        trackmodels = tm.getTracks();
         request.setAttribute("tracks", trackmodels);
         request.getRequestDispatcher("/SearchTracks.jsp").forward(request, response);
     }
@@ -45,7 +43,5 @@ public class SearchTracksController extends HttpServlet {
         else if (request.getParameter("filter") != null) {
             response.sendRedirect("SearchTracks");
         }
-
-
     }
 }

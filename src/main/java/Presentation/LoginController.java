@@ -2,6 +2,7 @@ package Presentation;
 
 import Model.LoginModel;
 
+import javax.inject.Singleton;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+@Singleton
 public class LoginController extends HttpServlet {
     LoginModel lm = new LoginModel();
     boolean canLog;

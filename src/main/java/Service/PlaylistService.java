@@ -1,12 +1,9 @@
 package Service;
 
-import Datasource.MainDAO;
-import Datasource.PlaylistDAO;
-import Datasource.TrackDAO;
-import Datasource.Util.DatabaseProperties;
+import Datasource.PlaylistInterface;
 import Domain.Playlist;
-import Domain.Track;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,26 +11,29 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-@Path("/playlists/{owner}")
+@Path("/playlists")
 @Singleton
 public class PlaylistService {
-    MainDAO playlistDAO = new PlaylistDAO(new DatabaseProperties());
+    PlaylistInterface playlistDAO;
     List<Playlist> playlists;
-    public PlaylistService() {
+
+    @Inject
+    public PlaylistService(PlaylistInterface playlistInterface) {
+        this.playlistDAO = playlistInterface;
     }
 
+    @Path("/ownername/{ownerName}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Playlist> getAllPlaylists(@PathParam("owner") String owner){
+    public List<Playlist> getAllPlaylists(@PathParam("ownerName") String owner){
          playlists = playlistDAO.getPlaylistsByOwner(owner);
         return playlists;
     }
 
-    public void changePlaylistName(String newplaylistname, String oldplaylistname) {
-        playlistDAO.changePlaylistName(newplaylistname, oldplaylistname);
+    public void changePlaylistName(String owner, String newplaylistname, String oldplaylistname) {
+        playlistDAO.changePlaylistName(owner, newplaylistname, oldplaylistname);
     }
 
     public void deletePlaylist(String owner, String playlist) throws SQLException {

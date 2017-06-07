@@ -11,7 +11,6 @@
     <input type="text" name="SearchInput">
     <input type="submit" name="submitInput" value="zoek">
     <input type="submit" name="goToPlaylist" value="ga naar playlist">
-    <input type="submit" name="filter" value="filter">
 </form>
 <table border="1">
     <tr>

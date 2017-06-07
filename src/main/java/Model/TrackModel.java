@@ -4,20 +4,28 @@ import Domain.Song;
 import Domain.Track;
 import Domain.Video;
 import Service.TrackService;
+import Spotitube.DataSourceGuiceModule;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrackModel extends IsOfflineAvailableModel {
+public class TrackModel extends Domain.IsOfflineAvailable{
     String performer;
     String title;
     String url;
     long duration;
-    TrackService ts = new TrackService();
+    TrackService ts;
     List<TrackModel> trackModels = new ArrayList<TrackModel>();
     List<Track> serviceTracks = new ArrayList<Track>();
+
+    public TrackModel(){
+        Injector injector = Guice.createInjector(new DataSourceGuiceModule());
+        ts = injector.getInstance(TrackService.class);
+    }
 
     public List<TrackModel> getTracksFromPlaylist(String playlist) {
         trackModels.clear();
@@ -26,9 +34,13 @@ public class TrackModel extends IsOfflineAvailableModel {
         return trackModels;
     }
 
-    public List<TrackModel> getTracks() throws SQLException {
+    public List<TrackModel> getTracks(){
         trackModels.clear();
-        serviceTracks = ts.getTracks();
+        try{
+            serviceTracks = ts.getTracks();
+        }catch(SQLException e){
+            System.out.println(e);
+        }
         fillTracks(serviceTracks);
         return trackModels;
     }
@@ -41,56 +53,36 @@ public class TrackModel extends IsOfflineAvailableModel {
     }
 
     private void fillTracks(List<Track> serviceTracks) {
+        SongModel sm = new SongModel();
+        VideoModel vm = new VideoModel();
         for (Track t: serviceTracks) {
             if(t instanceof Song) {
-                fillSong(t);
-
+                trackModels.add(sm.fillSong(t));
             }
             else if (t instanceof Video) {
-                fillVideo(t);
+                trackModels.add(vm.fillVideo(t));
             }
         }
     }
 
-    public void fillSong(Track t) {
-        TrackModel sm = new SongModel();
-        sm.setPerformer(t.performer);
-        sm.setTitle(t.title);
-        sm.setUrl(t.url);
-        sm.setDuration(t.duration);
-        sm.setAlbum(t.album);
-        sm.setOfflineAvailable(t.isOfflineAvailable());
-        trackModels.add(sm);
-    }
-
-    public void fillVideo(Track t) {
-        TrackModel vm = new VideoModel();
-        vm.setPerformer(t.performer);
-        vm.setTitle(t.title);
-        vm.setUrl(t.url);
-        vm.setDuration(t.duration);
-        vm.setPlaycount(t.playcount);
-        vm.setPublication_date(t.publication_date);
-        vm.setDescription(t.description);
-        vm.setOfflineAvailable(t.isOfflineAvailable());
-        trackModels.add(vm);
-    }
     public void deleteTrackFromPlaylist(String title, String performer, String playlist) {
         ts.deleteTrackFromPlaylist(title, performer, playlist);
     }
     public void changeAvailability(TrackModel tm, String playlist) throws SQLException {
         String tracktitle;
         String trackperformer;
-        String isOffline;
-        tm.toggle();
         tracktitle = tm.getTitle();
         trackperformer = tm.getPerformer();
-        if(tm.isOfflineAvailable()) {
+        String isOffline;
+        if(this.isOfflineAvailable()) {
+            toggle(true);
             isOffline = "true";
         }
         else {
+            toggle(false);
             isOffline = "false";
         }
+
         ts.changeAvailability(tracktitle, trackperformer, isOffline, playlist);
 
     }
@@ -129,13 +121,7 @@ public class TrackModel extends IsOfflineAvailableModel {
     public boolean getOfflineAvailable() {
         return isOfflineAvailable();
     }
-    public void setOfflineAvailable(boolean offlineAvailable) {
-        this.offlineAvailable = offlineAvailable;
+    public void setOfflineAvailable(boolean isOfflineAvailable){
+        toggle(isOfflineAvailable);
     }
-
-
-
-
-
-
 }

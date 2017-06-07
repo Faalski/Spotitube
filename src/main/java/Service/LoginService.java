@@ -1,16 +1,18 @@
 package Service;
 
-import Datasource.LoginDAO;
-import Datasource.Util.DatabaseProperties;
+import Datasource.LoginInterface;
+
+import javax.inject.Inject;
 
 public class LoginService {
-    LoginDAO ld = new LoginDAO(new DatabaseProperties());
+    LoginInterface loginDAO;
 
-    public LoginService(){
-
+    @Inject
+    public LoginService(LoginInterface loginDAO){
+        this.loginDAO = loginDAO;
     }
 
     public boolean checkLoginData(String user, String pass){
-        return ld.checkForLoginData(user, pass);
+        return loginDAO.checkForLoginData(user, pass);
     }
 }

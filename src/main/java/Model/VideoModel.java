@@ -1,10 +1,8 @@
 package Model;
 
+import Domain.Track;
 import java.util.Date;
 
-/**
- * Created by Lars on 29-3-2017.
- */
 public class VideoModel extends TrackModel {
     int playcount;
     Date publication_date = new Date();
@@ -32,5 +30,18 @@ public class VideoModel extends TrackModel {
     @Override
     public String getDescription() {
         return description;
+    }
+
+    public TrackModel fillVideo(Track t) {
+        TrackModel vm = new VideoModel();
+        vm.setPerformer(t.performer);
+        vm.setTitle(t.title);
+        vm.setUrl(t.url);
+        vm.setDuration(t.duration);
+        vm.setPlaycount(t.playcount);
+        vm.setPublication_date(t.publication_date);
+        vm.setDescription(t.description);
+        vm.setOfflineAvailable(t.isOfflineAvailable());
+        return vm;
     }
 }

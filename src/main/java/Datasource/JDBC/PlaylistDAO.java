@@ -1,18 +1,16 @@
-package Datasource;
+package Datasource.JDBC;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import Datasource.Util.DatabaseProperties;
+
+import Datasource.JDBC.Util.DatabaseProperties;
+import Datasource.PlaylistInterface;
 import Domain.Playlist;
-import Model.PlaylistModel;
+import com.google.inject.Inject;
 
-public class PlaylistDAO extends MainDAO {
-    private Logger logger = Logger.getLogger(getClass().getName());
+public class PlaylistDAO extends MainDAO implements PlaylistInterface {
 
+    @Inject
     public PlaylistDAO(DatabaseProperties databaseProperties) {
         super(databaseProperties);
     }
@@ -28,11 +26,11 @@ public class PlaylistDAO extends MainDAO {
             retrievePlaylists(statement, owner);
             closeConnection(statement, connection);
         } catch (SQLException e) {
-            raiseError(e);
+            System.out.println(e);
         }
         return playlists;
     }
-    @Override
+
     public void retrievePlaylists(PreparedStatement statement, String owner) throws SQLException {
         playlists = clearPlaylistValues(playlists, owner);
         ResultSet resultSet = statement.executeQuery();
@@ -41,8 +39,9 @@ public class PlaylistDAO extends MainDAO {
             playlists.add(playlist);
         }
     }
+
     @Override
-    public void changePlaylistName(String newplaylistname, String oldplaylistname) {
+    public void changePlaylistName(String owner, String newplaylistname, String oldplaylistname) {
         String[] sqlvariables = {newplaylistname, newplaylistname, oldplaylistname, oldplaylistname};
         try {
             Connection connection = openConnection();
@@ -52,9 +51,10 @@ public class PlaylistDAO extends MainDAO {
             statement.executeUpdate();
             closeConnection(statement, connection);
         } catch (SQLException e) {
-            raiseError(e);
+            System.out.println(e);
         }
     }
+
     @Override
     public void deletePlaylist(String owner, String playlist) throws SQLException {
         String[] sqlvariables = {owner, playlist};
@@ -66,9 +66,10 @@ public class PlaylistDAO extends MainDAO {
             statement.executeUpdate();
             closeConnection(statement, connection);
         } catch (SQLException e) {
-            raiseError(e);
+            System.out.println(e);
         }
     }
+
     @Override
     public void createNewPlaylist(String[] newPlaylistInfo) {
         String[] sqlvariables = newPlaylistInfo;
@@ -80,7 +81,7 @@ public class PlaylistDAO extends MainDAO {
             statement.executeUpdate();
             closeConnection(statement, connection);
         } catch (SQLException e) {
-            raiseError(e);
+            System.out.println(e);
         }
     }
 }

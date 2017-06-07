@@ -1,14 +1,9 @@
-package Datasource.Util;
+package Datasource.JDBC.Util;
 
 import java.io.IOException;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-/**
- * Created by Lars on 20-3-2017.
- */
-public class DatabaseProperties {
-    private Logger logger = Logger.getLogger(getClass().getName());
+
+public class DatabaseProperties{
     private Properties properties;
 
     public DatabaseProperties() {
@@ -16,7 +11,7 @@ public class DatabaseProperties {
         try {
             properties.load(getClass().getClassLoader().getResourceAsStream("database.properties"));
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Can't access property file database.properties", e);
+            System.out.println(e);
         }
     }
 

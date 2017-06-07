@@ -3,6 +3,7 @@ package Presentation;
 import Model.PlaylistModel;
 import Model.TrackModel;
 
+import javax.inject.Singleton;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Singleton
 public class ViewPlaylistsController extends HttpServlet {
     PlaylistModel pm = new PlaylistModel();
     List<TrackModel> trackmodels = new ArrayList<TrackModel>();

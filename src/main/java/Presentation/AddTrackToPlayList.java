@@ -3,6 +3,7 @@ package Presentation;
 import Model.TrackModel;
 
 
+import javax.inject.Singleton;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +16,10 @@ import java.util.List;
 
 /*Hier begint Functional Requirement 2*/
 
+@Singleton
 public class AddTrackToPlayList extends HttpServlet {
     private TrackModel tm = new TrackModel();
+
     private List<TrackModel> trackmodels;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

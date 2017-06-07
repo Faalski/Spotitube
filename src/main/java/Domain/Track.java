@@ -1,11 +1,15 @@
 package Domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by Lars on 24-3-2017.
- */
-public class Track extends IsOfflineAvailable{
+@Entity
+public class Track extends IsOfflineAvailable implements Serializable{
+
     public String performer;
     public String title;
     public String url;
@@ -15,13 +19,13 @@ public class Track extends IsOfflineAvailable{
     public Date publication_date = new Date();
     public String description;
 
+    public Track(){}
     public Track(String performer, String title, String url, long duration, String album) {
         this.performer = performer;
         this.title = title;
         this.url = url;
         this.duration = duration;
         this.album = album;
-
     }
 
     public Track(String performer, String title, String url, long duration, int playcount, Date publication_date, String description) {
@@ -38,23 +42,4 @@ public class Track extends IsOfflineAvailable{
         return performer;
     }
 
-    @Override
-    public void toggle() {
-        if (offlineAvailable) {
-            offlineAvailable = false;
-        }
-        else {
-            offlineAvailable = true;
-        }
-    }
-
-    @Override
-    public boolean isOfflineAvailable() {
-        return offlineAvailable;
-    }
-
-
-    public void setOfflineAvailable(boolean offlineAvailable) {
-        this.offlineAvailable = offlineAvailable;
-    }
 }

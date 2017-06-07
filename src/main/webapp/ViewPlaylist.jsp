@@ -24,11 +24,6 @@
     </c:forEach>
 
     <a href="/CreatePlaylist.jsp">Maak playlist</a>
-    <a href="/playlists/harry">Check JSON</a>
-
-
-
-
 </head>
 <body>
 

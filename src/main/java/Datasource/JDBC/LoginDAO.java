@@ -1,19 +1,22 @@
-package Datasource;
+package Datasource.JDBC;
 
-import Datasource.Util.DatabaseProperties;
-import Domain.Playlist;
+import Datasource.JDBC.Util.DatabaseProperties;
+import Datasource.LoginInterface;
 
+import javax.inject.Inject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginDAO extends MainDAO implements InterfaceDAO{
+public class LoginDAO extends MainDAO implements LoginInterface {
 
+    @Inject
     public LoginDAO(DatabaseProperties databaseProperties) {
         super(databaseProperties);
     }
 
+    @Override
     public boolean checkForLoginData(String user, String pass){
         String[] sqlvariables = {user, pass};
         boolean temp = false;
@@ -25,7 +28,7 @@ public class LoginDAO extends MainDAO implements InterfaceDAO{
             temp = retrieveLogin(statement);
             closeConnection(statement, connection);
         } catch (SQLException e) {
-            raiseError(e);
+            System.out.println(e);
         }
         return temp;
     }

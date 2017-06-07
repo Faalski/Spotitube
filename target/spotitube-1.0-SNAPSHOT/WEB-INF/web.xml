@@ -17,10 +17,6 @@
         <servlet-class>Presentation.ViewPlaylistsController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ViewTracks</servlet-name>
-        <servlet-class>Presentation.ViewTracksController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>Presentation.LoginController</servlet-class>
     </servlet>
@@ -44,10 +40,32 @@
         <servlet-name>ViewTracksFromPlaylist</servlet-name>
         <servlet-class>Presentation.ViewTracksFromPlaylistController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangeAvailability</servlet-name>
+        <servlet-class>Presentation.changeAvailabilityController</servlet-class>
+    </servlet>
+
+
+
+    //Rest Service
+    <servlet>
+        <servlet-name>TrackRest</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>Service.TrackService</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TrackRest</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+    //---
 
     <servlet-mapping>
-        <servlet-name>ViewTracks</servlet-name>
-        <url-pattern>/ViewTracks</url-pattern>
+        <servlet-name>ChangeAvailability</servlet-name>
+        <url-pattern>/ChangeAvailability</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewPlaylist</servlet-name>

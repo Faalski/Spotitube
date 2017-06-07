@@ -2,6 +2,7 @@ package Presentation;
 
 import Model.TrackModel;
 
+import javax.inject.Singleton;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Singleton
 public class ViewTracksFromPlaylistController extends HttpServlet {
     List<TrackModel> trackmodels = new ArrayList<TrackModel>();
     private TrackModel tm = new TrackModel();
@@ -39,7 +40,7 @@ public class ViewTracksFromPlaylistController extends HttpServlet {
                     }
                 }
             }
-            /*Hier begint Functional Requirement 4*/
+        /*Hier begint Functional Requirement 4*/
         if(request.getParameter("DeleteTrack") != null) {
             tm.deleteTrackFromPlaylist(title, performer, playlist);
             response.sendRedirect("ViewTracksFromPlaylist");

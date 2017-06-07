@@ -40,7 +40,33 @@
         <servlet-name>ViewTracksFromPlaylist</servlet-name>
         <servlet-class>Presentation.ViewTracksFromPlaylistController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangeAvailability</servlet-name>
+        <servlet-class>Presentation.changeAvailabilityController</servlet-class>
+    </servlet>
 
+
+
+    //Rest Service
+    <servlet>
+        <servlet-name>TrackRest</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>Service.TrackService</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TrackRest</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+    //---
+
+    <servlet-mapping>
+        <servlet-name>ChangeAvailability</servlet-name>
+        <url-pattern>/ChangeAvailability</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewPlaylist</servlet-name>
         <url-pattern>/ViewPlaylist</url-pattern>

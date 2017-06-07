@@ -2,9 +2,6 @@ package Model;
 
 import Domain.Track;
 
-/**
- * Created by Lars on 29-3-2017.
- */
 public class SongModel extends TrackModel {
     String album;
 
@@ -22,4 +19,14 @@ public class SongModel extends TrackModel {
         return performer;
     }
 
+    public TrackModel fillSong(Track t) {
+        TrackModel sm = new SongModel();
+        sm.setPerformer(t.performer);
+        sm.setTitle(t.title);
+        sm.setUrl(t.url);
+        sm.setDuration(t.duration);
+        sm.setAlbum(t.album);
+        setOfflineAvailable(t.isOfflineAvailable());
+        return sm;
+    }
 }

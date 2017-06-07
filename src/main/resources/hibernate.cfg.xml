@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!--suppress ALL -->
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.isolation">2</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">dimitri</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Spotitube</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">true</property>
+        <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="connection.pool_size">1</property>
+        <mapping class="Domain.IsOfflineAvailable"></mapping>
+        <mapping class="Domain.Playlist"></mapping>
+        <mapping class="Domain.Song"></mapping>
+        <mapping class="Domain.Track"></mapping>
+        <mapping class="Domain.Video"></mapping>
+        <mapping class="Domain.TrackInPlaylist"></mapping>
+        <mapping class="Domain.Login"></mapping>
+    </session-factory>
+</hibernate-configuration>

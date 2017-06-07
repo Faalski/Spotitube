@@ -24,10 +24,6 @@
     </c:forEach>
 
     <a href="/CreatePlaylist.jsp">Maak playlist</a>
-
-
-
-
 </head>
 <body>
 

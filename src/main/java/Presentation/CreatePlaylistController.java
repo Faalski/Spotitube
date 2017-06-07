@@ -2,6 +2,7 @@ package Presentation;
 
 import Model.PlaylistModel;
 
+import javax.inject.Singleton;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import java.io.IOException;
 
 /*Hier begint Functional Requirement 1*/
 
+@Singleton
 public class CreatePlaylistController extends HttpServlet {
     PlaylistModel pm = new PlaylistModel();
 
