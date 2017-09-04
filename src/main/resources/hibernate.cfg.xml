@@ -7,20 +7,15 @@
     <session-factory>
         <property name="hibernate.connection.isolation">2</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">dimitri</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Spotitube</property>
+        <property name="hibernate.connection.username">sql11193012</property>
+        <property name="hibernate.connection.password">gKKQp3j5Tl</property>
+        <property name="hibernate.connection.url">jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11193012</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
-        <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
+        <!--<property name="hibernate.hbm2ddl.auto">create</property>-->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="connection.pool_size">1</property>
-        <mapping class="Domain.IsOfflineAvailable"></mapping>
-        <mapping class="Domain.Playlist"></mapping>
-        <mapping class="Domain.Song"></mapping>
-        <mapping class="Domain.Track"></mapping>
-        <mapping class="Domain.Video"></mapping>
-        <mapping class="Domain.TrackInPlaylist"></mapping>
-        <mapping class="Domain.Login"></mapping>
+        <mapping class="Domain.Account"></mapping>
+        <mapping class="Domain.Item"></mapping>
     </session-factory>
 </hibernate-configuration>
